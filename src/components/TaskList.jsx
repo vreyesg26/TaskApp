@@ -80,7 +80,7 @@ const TaskList = () => {
           <input
             className="bg-transparent mx-1 border-none w-full outline-none md:text-base"
             type="text"
-            placeholder="Add item title"
+            placeholder="Añade el título"
             value={taskTitle}
             onChange={(e) => setTaskTitle(e.target.value)}
           />
@@ -89,14 +89,14 @@ const TaskList = () => {
           <input
             className="bg-transparent mx-1 border-none w-full outline-none md:text-base"
             type="text"
-            placeholder="Add item description"
+            placeholder="Añade la descripción"
             value={taskDescription}
             onChange={(e) => setTaskDescription(e.target.value)}
           />
         </div>
       </div>
       <p className="px-4 uppercase text-xs tracking-widest md:text-lg my-2">
-        To Do
+        Lista de tareas
       </p>
       <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
         {task.map((t) => (
