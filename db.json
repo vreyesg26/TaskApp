@@ -1,0 +1,53 @@
+{
+  "task": [
+    {
+      "id": 1,
+      "name": "Reunión de trabajo",
+      "description": "Presentar avance del proyecto",
+      "date": "12/01/2023",
+      "completed": "true"
+    },
+    {
+      "id": 2,
+      "name": "Corregir bugs",
+      "description": "Depurar el código del último feature",
+      "date": "12/01/2023",
+      "completed": "true"
+    },
+    {
+      "id": 3,
+      "name": "Entregar llaves",
+      "description": "Darle las llaves al administrador",
+      "date": "12/01/2023",
+      "completed": "true"
+    },
+    {
+      "id": 4,
+      "name": "Enviar correos",
+      "description": "Notificar por correo la siguiente reunión",
+      "date": "12/01/2023",
+      "completed": "true"
+    },
+    {
+      "id": 5,
+      "name": "Supervisión",
+      "description": "Darle feedback a los desarrolladores junior",
+      "date": "12/01/2023",
+      "completed": "false"
+    },
+    {
+      "name": "Junta",
+      "description": "Exponer las ideas para el nuevo proyecto",
+      "date": "13/01/2023",
+      "completed": "false",
+      "id": 6
+    },
+    {
+      "name": "Mantenimiento",
+      "description": "Hacer limpieza a la computadora del trabajo",
+      "date": "13/01/2023",
+      "completed": "false",
+      "id": 7
+    }
+  ]
+}
