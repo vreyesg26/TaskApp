@@ -3,8 +3,12 @@ import { TaskContext } from "../context/TaskContext";
 import { RiAddCircleFill } from "react-icons/ri";
 import { toast } from "react-toastify";
 
-const TaskHeader = () => {
+const TaskHeader = ({ taskTitle, taskDescription, setTaskTitle, setTaskDescription }) => {
   const { newTask } = useContext(TaskContext);
+  const clearInputs = () => {
+    setTaskTitle("");
+    setTaskDescription("");
+  };
 
   return (
     <div className="flex justify-center items-center space-x-4">

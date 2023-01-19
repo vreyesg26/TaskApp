@@ -8,7 +8,6 @@ export const TaskContextProvider = (props) => {
   const URL = "https://taskapp-backend-production.up.railway.app/task";
   const headers = { "Content-Type": "application/json" };
   const date = new Date();
-  console.log(tasks.length);
 
   const completed = async (id, taskState) => {
     const raw = JSON.stringify({ completed: taskState });
