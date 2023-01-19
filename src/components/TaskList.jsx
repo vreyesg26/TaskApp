@@ -11,9 +11,9 @@ const TaskList = () => {
         Lista de tareas
       </p>
       <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
-        {tasks.map((t, i) => (
+        {tasks !== null ? tasks.map((t, i) => (
           <TaskCard key={i} data={t} />
-        ))}
+        )) : console.log("No hay ni mierda")}
       </div>
     </>
   );

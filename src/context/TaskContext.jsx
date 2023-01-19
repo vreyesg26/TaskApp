@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 
 export const TaskContext = createContext();
 
@@ -8,6 +8,7 @@ export const TaskContextProvider = (props) => {
   const URL = "https://taskapp-backend-production.up.railway.app/task";
   const headers = { "Content-Type": "application/json" };
   const date = new Date();
+  console.log(tasks.length);
 
   const completed = async (id, taskState) => {
     const raw = JSON.stringify({ completed: taskState });
@@ -25,7 +26,8 @@ export const TaskContextProvider = (props) => {
     const raw = JSON.stringify({
       name: name,
       description: description,
-      date: date.getDate() + "/" + date.getMonth() + 1 + "/" + date.getFullYear(),
+      date:
+        date.getDate() + "/" + date.getMonth() + 1 + "/" + date.getFullYear(),
       completed: "false",
     });
     await fetch(URL, {

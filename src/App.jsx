@@ -1,12 +1,9 @@
-import TaskForm from "./components/TaskForm";
-import TaskList from "./components/TaskList";
+import { TaskForm, TaskHeader, TaskList} from "./components";
 
 function App() {
   return (
     <div className="text-white">
-      <h1 className="uppercase text-2xl py-3 font-extrabold text-center text-gray-300 md:text-3xl">
-        Tareas
-      </h1>
+      <TaskHeader />
       <TaskForm />
       <TaskList />
     </div>
