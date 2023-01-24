@@ -5,7 +5,7 @@ export const TaskContext = createContext();
 
 export const TaskContextProvider = (props) => {
   const [tasks, setTasks] = useState([]);
-  const URL = "https://taskapp-backend-production.up.railway.app/task";
+  const URL = "resonant-pin-production.up.railway.app/task";
   const headers = { "Content-Type": "application/json" };
   const date = new Date();
 
