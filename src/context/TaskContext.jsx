@@ -5,7 +5,7 @@ export const TaskContext = createContext();
 
 export const TaskContextProvider = (props) => {
   const [tasks, setTasks] = useState([]);
-  const URL = "https://resonant-pin-production.up.railway.app/task";
+  const URL = "https://taskapp-backend-production.up.railway.app/task";
   const headers = { "Content-Type": "application/json" };
   const date = new Date();
 
@@ -26,7 +26,7 @@ export const TaskContextProvider = (props) => {
       name: name,
       description: description,
       date:
-        date.getDate() + "/" + date.getMonth() + 1 + "/" + date.getFullYear(),
+        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
       completed: "false",
     });
     await fetch(URL, {
