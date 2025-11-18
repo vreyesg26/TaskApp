@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const TaskContext = createContext();
 
-export const TaskContextProvider = (props) => {
+export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const URL = "https://taskappbackend-9sbt.onrender.com/task";
   const headers = { "Content-Type": "application/json" };
@@ -11,14 +11,21 @@ export const TaskContextProvider = (props) => {
 
   const completed = async (id, taskState) => {
     const raw = JSON.stringify({ completed: taskState });
-    await fetch(`${URL}/${id}`, {
+    const data = await fetch(`${URL}/${id}`, {
       method: "PATCH",
       headers,
       body: raw,
     });
+
+    const response = await data.json();
+
     taskState == "true"
       ? toast.success("¡Genial! Una tarea menos para ti")
       : toast(`La tarea se marcó como pendiente`);
+
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, ...response } : task))
+    );
   };
 
   const newTask = async (name, description) => {
@@ -29,17 +36,30 @@ export const TaskContextProvider = (props) => {
         date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
       completed: "false",
     });
-    await fetch(URL, {
+    const data = await fetch(URL, {
       method: "POST",
       headers,
       body: raw,
     });
+
+    const response = await data.json();
+
     toast.success("La tarea se agregó correctamente");
+    setTasks([...tasks, response]);
   };
 
   const deleteData = async (id) => {
-    await fetch(`${URL}/${id}`, { method: "DELETE" });
+    const data = await fetch(`${URL}/${id}`, { method: "DELETE" });
+
+    const response = await data.json();
+
+    if (response.isError) {
+      toast.error(response.message);
+      return;
+    }
+
     toast.success("La tarea se eliminó correctamente");
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   const getData = async () => {
@@ -50,7 +70,7 @@ export const TaskContextProvider = (props) => {
 
   useEffect(() => {
     getData();
-  }, [tasks]);
+  }, []);
 
   return (
     <TaskContext.Provider
@@ -61,7 +81,7 @@ export const TaskContextProvider = (props) => {
         deleteData,
       }}
     >
-      {props.children}
+      {children}
     </TaskContext.Provider>
   );
 };

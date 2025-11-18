@@ -14,28 +14,41 @@ const TaskForm = () => {
 
   return (
     <>
-      <TaskHeader taskTitle={taskTitle} taskDescription={taskDescription} setTaskTitle={setTaskTitle} setTaskDescription={setTaskDescription}/>
+      <TaskHeader
+        taskTitle={taskTitle}
+        taskDescription={taskDescription}
+        setTaskTitle={setTaskTitle}
+        setTaskDescription={setTaskDescription}
+      />
       <div
-        className="flex flex-col md:flex-row items-center space-y-3 py-3 w-full justify-center border-b-[2px]
-     border-b-[#333361] md:border-b-[3px] md:space-x-6"
+        className="flex flex-col md:flex-row items-center justify-center w-full 
+             space-y-3 md:space-y-0 md:space-x-6 py-3 
+             border-b-[2px] md:border-b-[3px] border-b-[#333361]"
       >
-        <div className="bg-[#202042] py-3 w-80 px-3 rounded-full flex items-center md:w-[400px] flex-col ">
+        <div
+          className="bg-[#202042] py-3 px-3 w-80 md:w-[400px] rounded-full 
+                  flex items-center"
+        >
           <input
-            className="bg-transparent mx-1 border-none w-full outline-none md:text-base"
+            className="bg-transparent mx-1 border-none w-full outline-none text-sm md:text-base"
             type="text"
             placeholder="Añade el título"
             value={taskTitle}
             onChange={(e) => setTaskTitle(e.target.value)}
           />
         </div>
-        <div className="bg-[#202042] py-3 w-80 px-3 rounded-full flex items-center md:w-[400px] flex-col ">
+
+        <div
+          className="bg-[#202042] py-3 px-3 w-80 md:w-[400px] rounded-full 
+                  flex items-center"
+        >
           <input
-            className="bg-transparent mx-1 border-none w-full outline-none md:text-base"
+            className="bg-transparent mx-1 border-none w-full outline-none text-sm md:text-base"
             type="text"
             placeholder="Añade la descripción"
             value={taskDescription}
             onChange={(e) => setTaskDescription(e.target.value)}
-            onKeyPress={(e) =>
+            onKeyDown={(e) =>
               e.key === "Enter"
                 ? newTask(taskTitle, taskDescription) && clearInputs()
                 : ""
